@@ -1,12 +1,16 @@
 // components/LandingPage.js
 import React from 'react';
+import logo from './NL_Logo.png';
 
 const LandingPage = ({ onStartLabeling }) => {
   return (
     <div className="max-w-4xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
-      <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
-        Welcome to <span className="text-indigo-600">Niclabeler</span>
-      </h1>
+      <div className="flex items-center">
+        <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl">
+          Welcome to <span className="text-indigo-600">Nic Labeler</span>
+        </h1>
+        <img src={logo} alt="Nic Labeler Logo" className="ml-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24" />
+      </div>
       <p className="mt-6 text-xl text-gray-500">
         Easily add FDA-compliant nicotine warning labels to your product images for social media.
       </p>

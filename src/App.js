@@ -6,6 +6,7 @@ import ImageNavigation from './components/ImageNavigation';
 import LabelEditor from './components/LabelEditor';
 import DownloadButtons from './components/DownloadButtons';
 import LandingPage from './components/LandingPage';
+import logo from './NL_Logo.png';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -21,7 +22,7 @@ function App() {
     script.setAttribute('data-cfasync', 'false');
     script.setAttribute('data-id', 'niclabeler');
     script.setAttribute('data-description', 'Support me on Buy me a coffee!');
-    script.setAttribute('data-message', 'Coffee + Nicotine = :)');
+    script.setAttribute('data-message', 'Buy me a coffee :)');
     script.setAttribute('data-color', '#5F7FFF');
     script.setAttribute('data-position', 'Right');
     script.setAttribute('data-x_margin', '18');
@@ -77,15 +78,33 @@ function App() {
     setShowLandingPage(false);
   };
 
+  const FooterComponent = () => (
+    <footer className="mt-12 text-center">
+      <p className="text-gray-600">Brought to you by</p>
+      <img 
+        src="/fsfalogo.png" 
+        alt="Florida Smoke Free Association" 
+        className="mx-auto my-2 max-w-xs"
+      />
+      <p className="text-gray-600 font-semibold">Florida Smoke Free Association</p>
+    </footer>
+  );
+
   return (
     <div className="container mx-auto p-4">
       {showLandingPage ? (
-        <LandingPage onStartLabeling={handleStartLabeling} />
-      ) : (
         <>
-          <h1 className="text-4xl font-bold mb-6 text-center text-blue-600 font-serif italic">
-            Niclabeler
+          <LandingPage onStartLabeling={handleStartLabeling} />
+          <FooterComponent />
+        </>
+      ) : (
+        <>       
+          <div className="flex items-center justify-center">
+           <h1 className="text-4xl font-extrabold mb-6 text-center text-indigo-600 sm:text-5xl sm:tracking-tight lg:text-6xl">
+            Nic Labeler
           </h1>
+          <img src={logo} alt="Nic Labeler Logo" className="ml-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"/>
+          </div>
           <ImageUploader onImagesUpload={handleImagesUpload} />
           {images.length > 0 && (
             <div className="mt-6">
@@ -120,16 +139,7 @@ function App() {
               </div>
             </div>
           )}
-          {/* Add Florida Smoke Free Association footer */}
-          <footer className="mt-12 text-center">
-            <p className="text-gray-600">Brought to you by</p>
-            <img 
-              src="/fsfalogo.png" 
-              alt="Florida Smoke Free Association" 
-              className="mx-auto my-2 max-w-xs"
-            />
-            <p className="text-gray-600 font-semibold">Florida Smoke Free Association</p>
-          </footer>
+          <FooterComponent />
         </>
       )}
     </div>
