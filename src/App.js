@@ -1,5 +1,6 @@
 // App.js
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import ImageUploader from './components/ImageUploader';
 import ImageEditor from './components/ImageEditor';
 import ImageNavigation from './components/ImageNavigation';
@@ -100,10 +101,10 @@ function App() {
       ) : (
         <>       
           <div className="flex items-center justify-center">
-           <h1 className="text-4xl font-extrabold mb-6 text-center text-indigo-600 sm:text-5xl sm:tracking-tight lg:text-6xl">
-            Nic Labeler
-          </h1>
-          <img src={logo} alt="Nic Labeler Logo" className="ml-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"/>
+            <h1 className="text-4xl font-extrabold mb-6 text-center text-indigo-600 sm:text-5xl sm:tracking-tight lg:text-6xl">
+              Nic Labeler
+            </h1>
+            <img src={logo} alt="Nic Labeler Logo" className="ml-4 w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24"/>
           </div>
           <ImageUploader onImagesUpload={handleImagesUpload} />
           {images.length > 0 && (
@@ -142,6 +143,7 @@ function App() {
           <FooterComponent />
         </>
       )}
+      <Analytics />
     </div>
   );
 }
