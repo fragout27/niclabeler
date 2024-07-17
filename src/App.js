@@ -1,5 +1,5 @@
 // App.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageUploader from './components/ImageUploader';
 import ImageEditor from './components/ImageEditor';
 import ImageNavigation from './components/ImageNavigation';
@@ -12,6 +12,28 @@ function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [applyToAll, setApplyToAll] = useState(false);
   const [showLandingPage, setShowLandingPage] = useState(true);
+
+  useEffect(() => {
+    // Load Buy Me a Coffee widget
+    const script = document.createElement('script');
+    script.src = "https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js";
+    script.setAttribute('data-name', 'BMC-Widget');
+    script.setAttribute('data-cfasync', 'false');
+    script.setAttribute('data-id', 'niclabeler');
+    script.setAttribute('data-description', 'Support me on Buy me a coffee!');
+    script.setAttribute('data-message', 'Coffee + Nicotine = :)');
+    script.setAttribute('data-color', '#5F7FFF');
+    script.setAttribute('data-position', 'Right');
+    script.setAttribute('data-x_margin', '18');
+    script.setAttribute('data-y_margin', '18');
+    script.async = true;
+    document.body.appendChild(script);
+
+    // Cleanup function to remove the script when component unmounts
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
   const handleImagesUpload = (newImages) => {
     setImages(prevImages => [
@@ -98,6 +120,16 @@ function App() {
               </div>
             </div>
           )}
+          {/* Add Florida Smoke Free Association footer */}
+          <footer className="mt-12 text-center">
+            <p className="text-gray-600">Brought to you by</p>
+            <img 
+              src="/fsfalogo.png" 
+              alt="Florida Smoke Free Association" 
+              className="mx-auto my-2 max-w-xs"
+            />
+            <p className="text-gray-600 font-semibold">Florida Smoke Free Association</p>
+          </footer>
         </>
       )}
     </div>
